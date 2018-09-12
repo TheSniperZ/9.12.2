@@ -18,7 +18,7 @@ public:  //外部接口
 	~Point(){count--;}
 	int getX(){return x;}
 	int getY(){return y;}
-	void showCount(){   //输出静态数据成员
+	static void showCount(){   //输出静态数据成员
 		cout<<"Object count="<<count<<endl;
 	}
 private:  //私有数据成员
@@ -31,12 +31,13 @@ int Point::count = 0; //静态数据成员的定义和初始化，使用类名�
 
 int _tmain(int argc, _TCHAR* argv[]) //主函数
 {
+        Point::showCount();
 	Point a(4,5); //定义对象a，其构造函数会使count增1
 	cout<<"Point a:"<<a.getX() <<","<<a.getY ()<<endl;
 	a.showCount (); //输出对象个数
 	Point b(a); //定义对象b，其构造函数会使count增1
 	cout<<"Point b:"<<b.getX() <<","<<b.getY ()<<endl;
-	b.showCount ();//输出对象个数
+	Point::showCount();//输出对象个数
 	return 0;
 }
 
